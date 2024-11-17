@@ -1,0 +1,34 @@
+type Query {
+  getPeople: [People],
+  getPersonByName(name: String!): [People],
+  getPeopleInMongo: [People]
+}
+
+type People {
+  _id: ID!
+  name: String!
+  dateOfBirth: String!
+  address: String!
+  email: String!
+}
+
+type Mutation {
+  createPerson(input: PersonInput!): People
+  createPersonInMongo(person: PersonInput!): String
+
+}
+
+input PersonInput {
+  name: String!
+  dateOfBirth: String!
+  address: String!
+  email: String!
+}
+
+type Mutation {
+  updatePerson(_id: ID!, input: PersonInput!): People
+}
+
+type Mutation {
+  deletePerson(_id: ID!): Boolean
+}
